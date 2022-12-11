@@ -1,4 +1,4 @@
-import { Bot, Context, Logger, Schema, segment } from 'koishi'
+import { Bot, Context, Logger, Schema } from 'koishi'
 import type {} from 'koishi-plugin-rasa-nlg-dict'
 
 export const name = 'acs'
@@ -24,7 +24,7 @@ interface Message {
   bot: Bot<Bot.Config>
   guildId: string | undefined
   channelId: string
-  messageId: string
+  messageId: string | undefined
   content: string
   candidates: string[]
 }
@@ -36,7 +36,11 @@ export function apply(ctx: Context, config: Config) {
   let index = 0
 
   ctx.on('message', (session) => {
-    if (!config.service.target.includes(session.channelId)) return
+    if (
+      !session.channelId ||
+      !config.service.target.includes(session.channelId)
+    )
+      return
 
     ctx.rasanlg.generateCandidates(session.content).then((candidates) => {
       const id = index
@@ -46,7 +50,7 @@ export function apply(ctx: Context, config: Config) {
         id,
         bot: session.bot,
         guildId: session.guildId,
-        channelId: session.channelId,
+        channelId: session.channelId as string,
         messageId: session.messageId,
         content: session.content,
         candidates: candidates.map((x) => x.intent),
