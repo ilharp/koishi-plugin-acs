@@ -31,6 +31,7 @@ jobs:
       - name: Build Package
         run: |
           yarn build
+          yarn pack --filename koishi-plugin-rasa-acs.tgz
         shell: bash
 
       - uses: actions/upload-artifact@v3
