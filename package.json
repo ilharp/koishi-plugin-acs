@@ -35,6 +35,8 @@
   "devDependencies": {
     "atsc": "^1.2.2",
     "koishi": "^4.10.5",
+    "koishi-plugin-rasa-nlg-dict": "^0.0.1",
+    "koishi-plugin-rasa-nlu": "^0.0.1",
     "typescript": "^4.9.4"
   },
   "peerDependencies": {
