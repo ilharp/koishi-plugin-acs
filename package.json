@@ -1,0 +1,56 @@
+{
+  "name": "koishi-plugin-acs",
+  "description": "Automatic Customer Service (ACS) for Koishi.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Il Harper",
+    "email": "afanyiyu@hotmail.com",
+    "url": "https://ilharper.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ilharp/koishi-plugin-acs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilharp/koishi-plugin-acs.git"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "scripts": {
+    "build": "atsc -b"
+  },
+  "keywords": [
+    "chatbot",
+    "koishi",
+    "plugin",
+    "nlu",
+    "nlp",
+    "nlg",
+    "rasa",
+    "acs"
+  ],
+  "devDependencies": {
+    "atsc": "^1.2.2"
+  },
+  "peerDependencies": {
+    "koishi": "^4.10.5"
+  },
+  "koishi": {
+    "description": {
+      "en": "Automatic Customer Service (ACS) for Koishi.",
+      "zh": "Koishi 自动客户服务（ACS）。"
+    },
+    "service": {
+      "required": [
+        "rasanlu",
+        "rasanlg"
+      ]
+    },
+    "locales": [
+      "zh"
+    ]
+  }
+}
